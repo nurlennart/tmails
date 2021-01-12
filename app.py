@@ -22,6 +22,7 @@ def search():
             c.execute("SELECT name, address FROM teachers WHERE name LIKE ? OR address LIKE ?", (f'%{search}%', f'%{search}%'))
             conn.commit()
             data = c.fetchall()
+            conn.close()
             return render_template('index.html', teachers=data)
     else:
         return(redirect('/', 302))
