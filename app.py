@@ -1,12 +1,13 @@
 from flask import Flask
 from flask import render_template, request, redirect
-import json
 import sqlite3
 app = Flask(__name__)
+
 
 @app.route('/')
 def index():
     return render_template('index.html')
+
 
 @app.route('/search', methods=['GET'])
 def search():
@@ -26,4 +27,3 @@ def search():
             return render_template('index.html', teachers=data)
     else:
         return(redirect('/', 302))
-        
